@@ -45,15 +45,27 @@ body {
   right: 0px;
 }
 
+.no-underline {
+  text-decoration: none;
+  color: inherit;
+}
+
 .ilan {
   border: 1px solid #ccc;
   padding: 16px;
   margin: 16px 0;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+
+.ilan:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .ilan img {
   max-width: 100%;
   height: auto;
+  margin-bottom: 8px;
 }
 
 .ilan-baslik {
@@ -69,4 +81,9 @@ body {
 .ilan-kategori {
   font-style: italic;
   color: #555;
+}
+
+.ilan-detay{
+  font-size: 1.5em;
+  margin-bottom: 8px;
 }

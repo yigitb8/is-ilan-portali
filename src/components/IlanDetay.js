@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import '../App.css';
 
 const is_ilanlari_veriler = [
     {
@@ -80,7 +81,7 @@ const IlanDetay = () => {
 
   return (
     <div className='ilan-detay'>
-      <h2>{ilan.job_title}</h2>
+      <h3>{ilan.job_title}</h3>
       <p>{ilan.job_description}</p>
       <p>Konum: {ilan.location}</p>
       <p>Kategori: {ilan.category}</p>

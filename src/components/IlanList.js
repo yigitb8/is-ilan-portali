@@ -1,10 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles.css';
-
-<style>
-
-</style>
+import '../App.css';
 
 const is_ilanlari_veriler = [
     {
@@ -83,7 +79,7 @@ const IlanKartlari = ({ ilan, id }) => {
     return (
         <div className='ilan'>
             <Link to={`/ilan/${id}`} className='no-underline'>
-                <div className='ilan-baslik'> {ilan.job_title} </div>
+                <div className='ilan-baslik'> <h3>{ilan.job_title}</h3>  </div>
                 <img src={ilan.job_image_url} alt={ilan.job_title} />
                 <div className='ilan-baslik'> {ilan.job_description} </div>
                 <div className='ilan-baslik'> Konum: {ilan.location} </div>
