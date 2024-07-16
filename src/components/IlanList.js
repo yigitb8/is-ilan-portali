@@ -85,13 +85,19 @@ const IlanKartlari = ({ ilan }) => {
     );
 };
 
-const IlanList = () => {
+const IlanList = ({ search }) => {
+    const filtreIlan = is_ilanlari_veriler.filter((ilan) =>
+        ilan.job_title.toLowerCase().includes(search.toLowerCase()) ||
+        ilan.job_description.toLowerCase().includes(search.toLowerCase()) ||
+        ilan.location.toLowerCase().includes(search.toLowerCase()) ||
+        ilan.category.toLowerCase().includes(search.toLowerCase())
+    );
 
     return (
         <div id='ilan-listesi'>
 
-            {is_ilanlari_veriler.map((is_ilanlari_veri, index) => (
-                <IlanKartlari key={index} ilan={is_ilanlari_veri} />
+            {filtreIlan.map((ilan, index) => (
+                <IlanKartlari key={index} ilan={ilan} />
             ))}
         </div>
     );
