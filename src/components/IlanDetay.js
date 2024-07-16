@@ -1,10 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles.css';
-
-<style>
-
-</style>
+import { useParams } from 'react-router-dom';
 
 const is_ilanlari_veriler = [
     {
@@ -79,35 +74,18 @@ const is_ilanlari_veriler = [
     }
   ];
 
-const IlanKartlari = ({ ilan, id }) => {
-    return (
-        <div className='ilan'>
-            <Link to={`/ilan/${id}`} className='no-underline'>
-                <div className='ilan-baslik'> {ilan.job_title} </div>
-                <img src={ilan.job_image_url} alt={ilan.job_title} />
-                <div className='ilan-baslik'> {ilan.job_description} </div>
-                <div className='ilan-baslik'> Konum: {ilan.location} </div>
-                <div className='ilan-baslik'> Kategori: {ilan.category} </div>
-            </Link>
-        </div>
-    );
+const IlanDetay = () => {
+  const { id } = useParams();
+  const ilan = is_ilanlari_veriler[id];
+
+  return (
+    <div className='ilan-detay'>
+      <h2>{ilan.job_title}</h2>
+      <p>{ilan.job_description}</p>
+      <p>Konum: {ilan.location}</p>
+      <p>Kategori: {ilan.category}</p>
+    </div>
+  );
 };
 
-const IlanList = ({ searchTerm }) => {
-    const filteredJobs = is_ilanlari_veriler.filter((ilan, index) => 
-        ilan.job_title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        ilan.job_description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        ilan.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        ilan.category.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    return (
-        <div id='ilan-listesi' class="no-underline">
-            {filteredJobs.map((ilan, index) => (
-                <IlanKartlari key={index} ilan={ilan} id={index} />
-            ))}
-        </div>
-    );
-};
-
-export default IlanList;
+export default IlanDetay;

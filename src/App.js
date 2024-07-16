@@ -1,34 +1,38 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import IlanList from './components/IlanList';
+import IlanDetay from './components/IlanDetay';
 
 function App() {
+  const [search, setSearch] = useState('');
 
-  const [search, setSearch] = useState('')
-
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     setSearch(e.target.value);
   };
 
   return (
-    <div className="App">
-      <h1>İş İlan Portalı</h1>
+    <Router>
+      <div className="App">
+        <h1>İş İlan Portalı</h1>
 
-      <div className="header">
+        <div className="header">
+          <input 
+            type="text"
+            placeholder="Arama yapın..."
+            value={search}
+            onChange={handleInputChange}
+          />
 
-        <input
-          type="text"
-          placeholder="Arama yapın..."
-          value={search}
-          onChange={handleChange}
-        />
-
-        <button id="arama_butonu">Ara</button>
+          <button id="arama_butonu">Ara</button>
+        </div>
+        
+        <Routes>
+          <Route path="/" element={<IlanList searchTerm={search} />} />
+          <Route path="/ilan/:id" element={<IlanDetay />} />
+        </Routes>
       </div>
-
-      <IlanList search={search} />
-    
-    </div>
+    </Router>
   );
 }
 
